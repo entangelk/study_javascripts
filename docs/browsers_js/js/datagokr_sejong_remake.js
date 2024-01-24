@@ -30,12 +30,10 @@
     for (let i=1; i<=page_count; i++){
 
         Page_count_list = `${Page_count_list}<button class='btn btn-light' id='page_count${i}'>${i}</button>`;
-
-      
+     
     }
-    
+   
     pagenation.innerHTML=Page_count_list;
-
     
 
 
