@@ -1,7 +1,4 @@
     window.onload= async (event) => {
-        let page_botton = document.querySelector("#page_button")
-        page_botton.innerHTML = `<button class="btn btn-primary" id="pre_page">이전 페이지</button>
-        <button class="btn btn-primary" id="next_page">다음 페이지</button>`
         let pagenum = 1;
     
         let url = `https://apis.data.go.kr/5690000/sjMusicIndustryStatus/sj_00000710?serviceKey=U7qOOR4KMrkRvFHfQjd8XQh1DJraaYLetyiqIfNiJEsrwG%2BHRWhPpfVffZDjB0aJtFc9eSmc6tR1iWQat2Stew%3D%3D&pageIndex=${pagenum}&pageUnit=200&dataTy=json`;
@@ -25,6 +22,22 @@
         } catch(error){
             console.log(`Error Message : ${error.message}`);
         };
+
+    let page_count = parseInt(indusrty_list.length/20);
+    let Page_count_list=``;
+
+    let pagenation = document.querySelector("#page_list");
+    for (let i=1; i<=page_count; i++){
+
+        Page_count_list = `${Page_count_list}<button class='btn btn-light' id='page_count${i}'>${i}</button>`;
+
+      
+    }
+    
+    pagenation.innerHTML=Page_count_list;
+
+    
+
 
     let pre_page = document.querySelector("#pre_page");
     pre_page.addEventListener('click', async (event) => {
