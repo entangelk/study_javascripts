@@ -9,29 +9,64 @@
         try{
            let response = await fetch(url, options); // send
            var result = await response.json();
-           let indusrty_list = result.body.items
-    
+           var indusrty_list = result.body.items
+            
+
+           let page_list = indusrty_list.slice(pagenum,pagenum+20)
+
            let get_list ='';
-           for (let objects of indusrty_list){
+           for (let objects of page_list){
                get_list = `${get_list}<tr><td>${objects['mtlty']}</td><td>${objects['roadNmAddr']}</td><td>${objects['induty']}</td></tr>`;
            }
            
-           let page_list = indusrty_list[pagenum:pagenum+20];
-
            let get_element = document.querySelector("#api_input");
            get_element.innerHTML = get_list;
+
         } catch(error){
             console.log(`Error Message : ${error.message}`);
         };
 
     let pre_page = document.querySelector("#pre_page");
     pre_page.addEventListener('click', async (event) => {
-  
+        if (pagenum == 1) {
+            pagenum == 1
+        }
+        else {
+            pagenum = pagenum - 1
+            let page_list = indusrty_list.slice(pagenum*20,(pagenum+1)*20)
+
+            let get_list ='';
+            for (let objects of page_list){
+                get_list = `${get_list}<tr><td>${objects['mtlty']}</td><td>${objects['roadNmAddr']}</td><td>${objects['induty']}</td></tr>`;
+            }
+            let get_element = document.querySelector("#api_input");
+            get_element.innerHTML = get_list;
+        
+        }
+            
+
     } )
     
     let next_page = document.querySelector("#next_page");
     next_page.addEventListener('click', async (event) => {
-   
+           if (pagenum == parseInt(indusrty_list.length/20)) {
+            pagenum == parseInt(indusrty_list.length/20)
+        }
+        else {
+            pagenum = pagenum + 1
+            let page_list = indusrty_list.slice(pagenum*20,(pagenum+1)*20)
+
+
+            let get_list ='';
+            for (let objects of page_list){
+                get_list = `${get_list}<tr><td>${objects['mtlty']}</td><td>${objects['roadNmAddr']}</td><td>${objects['induty']}</td></tr>`;
+            }
+
+            let get_element = document.querySelector("#api_input");
+            get_element.innerHTML = get_list;
+        
+        }
     } )
+
 
 };
