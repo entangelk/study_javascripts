@@ -16,6 +16,8 @@
                get_list = `${get_list}<tr><td>${objects['mtlty']}</td><td>${objects['roadNmAddr']}</td><td>${objects['induty']}</td></tr>`;
            }
            
+           let page_list = indusrty_list[pagenum:pagenum+20];
+
            let get_element = document.querySelector("#api_input");
            get_element.innerHTML = get_list;
         } catch(error){

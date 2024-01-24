@@ -1,7 +1,6 @@
 let pagenum = 1;
 
-let sjMusicIndustryStatus = document.querySelector("#send_r");
-sjMusicIndustryStatus.addEventListener('click', async (event) => {
+window.onload= async (event) => {
     let page_botton = document.querySelector("#page_button")
     page_botton.innerHTML = `<button class="btn btn-primary" id="pre_page">이전 페이지</button>
     <button class="btn btn-primary" id="next_page">다음 페이지</button>`
@@ -85,4 +84,4 @@ sjMusicIndustryStatus.addEventListener('click', async (event) => {
    
     } )
 
-});
+};
